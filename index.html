@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTML5 Canvas Gauge Examples</title>
+    <link href="https://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="fonts/fonts.css">
+    <script src="gauge.min.js"></script>
+    <script src="analytics.js"></script>
+    <script>
+        window.onload = function() {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                title: {
+                    text: ""
+                },
+                axisY: {
+                    title: "Kms",
+                    suffix: " kms"
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,### kms",
+                    indexLabel: "{y}",
+                    dataPoints: [{
+                            label: "Rider1",
+                            //width: 10;
+                            y: 206
+                        },
+                        {
+                            label: "Rider2",
+                            y: 163
+                        },
+                        {
+                            label: "Rider3",
+                            y: 154
+                        },
+                        {
+                            label: "Rider4",
+                            y: 176
+                        },
+                        {
+                            label: "Rider5",
+                            y: 184
+                        }
+                    ]
+                }]
+            });
+
+            function updateChart() {
+                var riderColor, deltaY, yVal;
+                var dps = chart.options.data[0].dataPoints;
+                for (var i = 0; i < dps.length; i++) {
+                    deltaY = Math.round(2 + Math.random() * (-2 - 2));
+                    yVal = deltaY + dps[i].y > 0 ? dps[i].y + deltaY : 0;
+                    riderColor = yVal > 200 ? "#40c4ff" : yVal >= 170 ? "#ffff00" : yVal < 170 ? "#42a5f5 " : null;
+                    dps[i] = {
+                        label: "Rider " + (i + 1),
+                        y: yVal,
+                        color: riderColor
+                    };
+                }
+                chart.options.data[0].dataPoints = dps;
+                chart.render();
+            };
+            updateChart();
+
+            setInterval(function() {
+                updateChart()
+            }, 500);
+
+
+        animateGauges();
+            setInterval(function() {
+                animateGauges()
+            }, 500);
+
+
+
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <div id="chartContainer" style="height: 370px; max-width: 100%; margin: 90px auto;"></div>
+    <div class="row">
+        <div class="col s12 l1">
+
+        </div>
+        <div class="col s12 l2">
+            <canvas data-type="radial-gauge" data-width="250" data-height="250" data-units="Km/h" data-title="false" data-value="33.77" data-animate-on-init="true" data-animated-value="true" data-min-value="0" data-max-value="220" data-major-ticks="0,20,40,60,80,100,120,140,160,180,200,220" data-minor-ticks="2" data-stroke-ticks="false" data-highlights='[
+            { "from": 0, "to": 50, "color": "rgba(0,255,0,.15)" },
+            { "from": 50, "to": 100, "color": "rgba(255,255,0,.15)" },
+            { "from": 100, "to": 150, "color": "rgba(255,30,0,.25)" },
+            { "from": 150, "to": 200, "color": "rgba(255,0,225,.25)" },
+            { "from": 200, "to": 220, "color": "rgba(0,0,255,.25)" }
+        ]' data-color-plate="#222" data-color-major-ticks="#f5f5f5" data-color-minor-ticks="#ddd" data-color-title="#fff" data-color-units="#ccc" data-color-numbers="#eee" data-color-needle-start="rgba(240, 128, 128, 1)" data-color-needle-end="rgba(255, 160, 122, .9)" data-value-box="true" data-animation-rule="bounce" data-animation-duration="500" data-font-value="Led" data-font-numbers="Led"></canvas>
+        </div>
+        <div class="col s12 l2">
+            <canvas data-type="radial-gauge" data-width="250" data-height="250" data-units="Km/h" data-title="false" data-value="33.77" data-animate-on-init="true" data-animated-value="true" data-min-value="0" data-max-value="220" data-major-ticks="0,20,40,60,80,100,120,140,160,180,200,220" data-minor-ticks="2" data-stroke-ticks="false" data-highlights='[
+            { "from": 0, "to": 50, "color": "rgba(0,255,0,.15)" },
+            { "from": 50, "to": 100, "color": "rgba(255,255,0,.15)" },
+            { "from": 100, "to": 150, "color": "rgba(255,30,0,.25)" },
+            { "from": 150, "to": 200, "color": "rgba(255,0,225,.25)" },
+            { "from": 200, "to": 220, "color": "rgba(0,0,255,.25)" }
+        ]' data-color-plate="#222" data-color-major-ticks="#f5f5f5" data-color-minor-ticks="#ddd" data-color-title="#fff" data-color-units="#ccc" data-color-numbers="#eee" data-color-needle-start="rgba(240, 128, 128, 1)" data-color-needle-end="rgba(255, 160, 122, .9)" data-value-box="true" data-animation-rule="bounce" data-animation-duration="500" data-font-value="Led" data-font-numbers="Led"></canvas>
+        </div>
+        <div class="col s12 l2">
+            <canvas data-type="radial-gauge" data-width="250" data-height="250" data-units="Km/h" data-title="false" data-value="33.77" data-animate-on-init="true" data-animated-value="true" data-min-value="0" data-max-value="220" data-major-ticks="0,20,40,60,80,100,120,140,160,180,200,220" data-minor-ticks="2" data-stroke-ticks="false" data-highlights='[
+            { "from": 0, "to": 50, "color": "rgba(0,255,0,.15)" },
+            { "from": 50, "to": 100, "color": "rgba(255,255,0,.15)" },
+            { "from": 100, "to": 150, "color": "rgba(255,30,0,.25)" },
+            { "from": 150, "to": 200, "color": "rgba(255,0,225,.25)" },
+            { "from": 200, "to": 220, "color": "rgba(0,0,255,.25)" }
+        ]' data-color-plate="#222" data-color-major-ticks="#f5f5f5" data-color-minor-ticks="#ddd" data-color-title="#fff" data-color-units="#ccc" data-color-numbers="#eee" data-color-needle-start="rgba(240, 128, 128, 1)" data-color-needle-end="rgba(255, 160, 122, .9)" data-value-box="true" data-animation-rule="bounce" data-animation-duration="500" data-font-value="Led" data-font-numbers="Led"></canvas>
+        </div>
+        <div class="col s12 l2">
+            <canvas data-type="radial-gauge" data-width="250" data-height="250" data-units="Km/h" data-title="false" data-value="33.77" data-animate-on-init="true" data-animated-value="true" data-min-value="0" data-max-value="220" data-major-ticks="0,20,40,60,80,100,120,140,160,180,200,220" data-minor-ticks="2" data-stroke-ticks="false" data-highlights='[
+            { "from": 0, "to": 50, "color": "rgba(0,255,0,.15)" },
+            { "from": 50, "to": 100, "color": "rgba(255,255,0,.15)" },
+            { "from": 100, "to": 150, "color": "rgba(255,30,0,.25)" },
+            { "from": 150, "to": 200, "color": "rgba(255,0,225,.25)" },
+            { "from": 200, "to": 220, "color": "rgba(0,0,255,.25)" }
+        ]' data-color-plate="#222" data-color-major-ticks="#f5f5f5" data-color-minor-ticks="#ddd" data-color-title="#fff" data-color-units="#ccc" data-color-numbers="#eee" data-color-needle-start="rgba(240, 128, 128, 1)" data-color-needle-end="rgba(255, 160, 122, .9)" data-value-box="true" data-animation-rule="bounce" data-animation-duration="500" data-font-value="Led" data-font-numbers="Led"></canvas>
+        </div>
+        <div class="col s12 l2">
+            <canvas data-type="radial-gauge" data-width="250" data-height="250" data-units="Km/h" data-title="false" data-value="33.77" data-animate-on-init="true" data-animated-value="true" data-min-value="0" data-max-value="220" data-major-ticks="0,20,40,60,80,100,120,140,160,180,200,220" data-minor-ticks="2" data-stroke-ticks="false" data-highlights='[
+            { "from": 0, "to": 50, "color": "rgba(0,255,0,.15)" },
+            { "from": 50, "to": 100, "color": "rgba(255,255,0,.15)" },
+            { "from": 100, "to": 150, "color": "rgba(255,30,0,.25)" },
+            { "from": 150, "to": 200, "color": "rgba(255,0,225,.25)" },
+            { "from": 200, "to": 220, "color": "rgba(0,0,255,.25)" }
+        ]' data-color-plate="#222" data-color-major-ticks="#f5f5f5" data-color-minor-ticks="#ddd" data-color-title="#fff" data-color-units="#ccc" data-color-numbers="#eee" data-color-needle-start="rgba(240, 128, 128, 1)" data-color-needle-end="rgba(255, 160, 122, .9)" data-value-box="true" data-animation-rule="bounce" data-animation-duration="500" data-font-value="Led" data-font-numbers="Led"></canvas>
+        </div>
+        <div class="col s12 l1"></div>
+    </div>
+    <script src="canvas.min.js"></script>
+    <script>
+        M.AutoInit();
+    </script>
+    <script src='https://img1.wsimg.com/tcc/tcc_l.combined.1.0.6.min.js'></script>
+    <script>
+        if (!Array.prototype.forEach) {
+            Array.prototype.forEach = function(cb) {
+                var i = 0,
+                    s = this.length;
+                for (; i < s; i++) {
+                    cb && cb(this[i], i, this);
+                }
+            }
+        }
+
+        document.fonts && document.fonts.forEach(function(font) {
+            font.loaded.then(function() {
+                if (font.family.match(/Led/)) {
+                    document.gauges.forEach(function(gauge) {
+                        gauge.update();
+                        gauge.options.renderTo.style.visibility = 'visible';
+                    });
+                }
+            });
+        });
+
+        var timers = [];
+
+        function animateGauges() {
+            document.gauges.forEach(function(gauge) {
+                timers.push(setInterval(function() {
+                    gauge.value = Math.random() *
+                        (gauge.options.maxValue - gauge.options.minValue) +
+                        gauge.options.minValue;
+                }, gauge.animation.duration + 50));
+            });
+        }
+
+    </script>
+</body>
+
+</html>
